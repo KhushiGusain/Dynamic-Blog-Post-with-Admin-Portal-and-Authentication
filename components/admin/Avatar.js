@@ -2,6 +2,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { signOut, useSession } from 'next-auth/react';
+import Image from 'next/image';
 
 const Avatar = () => {
     const {data: session, status} = useSession();
@@ -21,12 +22,12 @@ const Avatar = () => {
             className='flex gap-2 justify-center items-center mx-2 cursor-pointer border bg-white border-gray-200 rounded-lg p-2 hover:bg-gray-50 transition-colors duration-200'
         >
             <h2 className='text-sm font-medium text-black'>{session?.user?.email}</h2>
-            <img 
-                className='border-2 border-gray-200 rounded-full p-1 hover:border-gray-300 transition-colors duration-200' 
-                width={30} 
-                height={30} 
-                src="/images/wired-outline-21-avatar-hover-jumping.png" 
-                alt="avatar" 
+            <Image
+              src={session?.user?.image || "/images/default-avatar.png"}
+              alt="Profile"
+              width={40}
+              height={40}
+              className="rounded-full"
             />
             
             {drop && (
