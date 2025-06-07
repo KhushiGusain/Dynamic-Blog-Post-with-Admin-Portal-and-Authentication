@@ -6,28 +6,31 @@ import Sidebar from '@/components/admin/Sidebar';
 
 const Dashboard = async() => {
   return (
-    <div className='min-h-screen flex'>
-      <div className="sidebar w-[20%]  bg-slate-400">
+    <div className='min-h-screen flex bg-gray-50'>
+      <div className="sidebar w-64 bg-white shadow-lg">
         <Sidebar/>
       </div>
-      <div className="mainbar w-[80%]">
-        <div className='font-bold text-xl p-3 flex justify-between  text-black'>
-          <h1 className='my-2'>Dashboard</h1>
+      <div className="mainbar flex-1">
+        <div className='bg-white shadow-sm'>
+          <div className='px-6 py-4 flex justify-between items-center'>
+            <h1 className='text-2xl font-bold text-gray-800'>Dashboard</h1>
             <Avatar/>
           </div>
-          <hr className='text-slate-500' />
-          <CreateBlogButton/>
-          <div className="blogs mx-10 flex h-[60%] my-2">
-
-          {/* table */}
-          <div className="relative w-full overflow-x-auto overflow-y-auto shadow-md sm:rounded-lg">
-            <BlogTable/>
+        </div>
+        
+        <div className="p-6">
+          <div className="mb-6">
+            <CreateBlogButton/>
           </div>
-
-
+          
+          <div className="bg-white rounded-lg shadow-sm">
+            <div className="p-4">
+              <h2 className="text-lg font-semibold text-gray-800 mb-4">Blog Posts</h2>
+              <BlogTable/>
+            </div>
           </div>
+        </div>
       </div>
-
     </div>
   )
 }

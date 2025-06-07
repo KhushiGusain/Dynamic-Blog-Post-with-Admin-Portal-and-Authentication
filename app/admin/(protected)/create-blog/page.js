@@ -5,23 +5,27 @@ import Avatar from '@/components/admin/Avatar'
 
 const createBlog = () => {
   return (
-    <div className='min-h-screen flex'>
-      <div className="sidebar w-[20%] bg-slate-400">
+    <div className='min-h-screen flex bg-gray-50'>
+      <div className="sidebar w-64 bg-white shadow-lg">
         <Sidebar/>
       </div>
-      <div className=" w-[80%]">
-      <div className='font-bold text-xl p-3 flex justify-between  text-black'>
-          <h1 className='my-2'>Admin Blog Form</h1>
+      <div className="mainbar flex-1">
+        <div className='bg-white shadow-sm'>
+          <div className='px-6 py-4 flex justify-between items-center'>
+            <h1 className='text-2xl font-bold text-black'>Create New Blog</h1>
             <Avatar/>
           </div>
-        <hr className='text-slate-500' />
-
-        <div className="flex-col items-center justify-center flex">
-          <BlogForm/>
+        </div>
+        
+        <div className="p-6">
+          <div className="bg-white rounded-lg shadow-sm">
+            <div className="p-6">
+              <BlogForm/>
+            </div>
           </div>
         </div>
       </div>
-
+    </div>
   )
 }
 
