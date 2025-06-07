@@ -7,7 +7,6 @@ import { MdLockPerson } from "react-icons/md";
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { FaEyeSlash } from "react-icons/fa";
-import Image from 'next/image';
 
 
 export default function Home() {
@@ -25,7 +24,7 @@ export default function Home() {
     if(status === "authenticated"){
         router.push("/admin/dashboard")
     }
-  },[status, router])
+  },[status])
 
   const handleSignIn = async(e) =>{
     e.preventDefault();
@@ -70,7 +69,7 @@ export default function Home() {
         <div className="card w-full max-w-md bg-white flex rounded-2xl flex-col items-center shadow-xl hover:shadow-2xl transition-shadow duration-300">
           <div className="logo flex flex-col items-center justify-center gap-1 w-full p-6">
             <div className="logo flex justify-center items-center">
-              <Image width={180} height={180} src="/images/ezlearn.png" alt="logo" className="hover:scale-105 transition-transform duration-300" />
+              <img width={180} height={180} src="/images/ezlearn.png" alt="logo" className="hover:scale-105 transition-transform duration-300" />
             </div>
           </div>
           <div className="form w-full px-8 pb-8">

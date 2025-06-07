@@ -4,7 +4,6 @@ import { MdDashboardCustomize } from "react-icons/md";
 import { MdOutlineNoteAlt } from "react-icons/md";
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
-import Image from 'next/image';
 
 const Sidebar = () => {
   const router = useRouter();
@@ -22,12 +21,10 @@ const Sidebar = () => {
     <div className="h-full">
       <div className="p-6">
         <div className="flex items-center gap-3 mb-8">
-          <Image
-            src="/images/ezlearn.png"
-            alt="Logo"
-            width={150}
-            height={150}
-            className="hover:scale-105 transition-transform duration-300"
+          <img 
+            className='w-12 h-12 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200' 
+            src="/images/ezlearnlogo.png" 
+            alt="logo" 
           />
           <div>
             <div className='font-bold text-gray-800'>EzLearn Blog</div>

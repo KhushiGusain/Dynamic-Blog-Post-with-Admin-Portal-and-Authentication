@@ -172,7 +172,7 @@ const Menubar = ({editor, onAddImage}) => {
             ${editor.isActive('blockquote') ? "bg-purple-600 text-white" : "bg-gray-100 text-black hover:bg-gray-200"}
             ${!editor.can().chain().focus().toggleBlockquote().run() ? "opacity-50 cursor-not-allowed" : ""}`}
           >
-          &quot;Blockquote&quot;
+          "Blockquote"
         </button>
 
         <button 

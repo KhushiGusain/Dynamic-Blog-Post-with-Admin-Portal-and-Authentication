@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react'
 import Link from 'next/link'
 import { useState } from 'react'
-import Image from 'next/image'
 
 const Blogs = () => {
 
@@ -29,7 +28,7 @@ const Blogs = () => {
 return (
       <div className='blog-list p-5 w-full'>
           <div className="heading container mx-auto flex flex-col justify-center space-y-2 rounded-lg bg-white items-center">
-              <Image width={200} height={200} src="/images/ezlearn.png" alt="logo" />
+              <img width={200} height={200} src="/images/ezlearn.png" alt="logo" />
               <h1 className='text-black font-bold text-xl'>All Blog Posts</h1>
           </div>
 
@@ -39,13 +38,7 @@ return (
           {blogs.map((blog)=>(
               <div key={blog.slug} className="card col-span-1 rounded-lg bg-white">
                   <div className='w-full'>
-                      <Image
-                        src={blog.hero_image || "/images/default-blog.jpg"}
-                        alt={blog.title}
-                        width={400}
-                        height={200}
-                        className="w-full h-48 object-cover rounded-t-lg"
-                      />
+                      <img className='w-full h-36 object-cover rounded-t-lg' src={blog.hero_image} alt="hero"/>
                       <div className="details gap-1 flex flex-col text-black m-2">
                           <h2 className='font-bold text-lg'>{blog.title}</h2>
                           <p className='text-xs'>{getPreview(blog.content, 170)}</p>
