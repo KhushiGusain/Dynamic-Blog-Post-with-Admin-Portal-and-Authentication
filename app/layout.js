@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from 'next/font/google'
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -9,13 +9,10 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import { Poppins } from 'next/font/google'
 
-
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -23,10 +20,6 @@ const poppins = Poppins({
   variable: '--font-poppins',
   display: 'swap',
 })
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "Create Next App",
@@ -38,7 +31,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${poppins.className} ${geistSans.variable} ${geistMono.variable} antialiased `}
+        className={`${poppins.className} ${inter.className} antialiased`}
       >
         <SessionWrapper session={session}>
 
