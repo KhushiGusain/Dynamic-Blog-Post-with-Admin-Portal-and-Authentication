@@ -7,64 +7,55 @@ import bcrypt from 'bcryptjs'
 export const authOptions = {
   providers: [
     CredentialsProvider({
-      name: "Credentials",
       credentials: {
         email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
+        const { email, password } = credentials;
+        console.log("Credentials received:", { email, password });
+        await connectDb();
+
+        const admin = await Admin.findOne({ email });
+        if (!admin) {
+          console.log("Admin not found");
           return null;
         }
 
-        try {
-          await connectDb();
-          const admin = await Admin.findOne({ email: credentials.email });
-          
-          if (!admin) {
-            return null;
-          }
+        console.log("admin found!!");
 
-          const isMatch = await bcrypt.compare(credentials.password, admin.password);
-          if (!isMatch) {
-            return null;
-          }
-
-          return {
-            id: admin._id.toString(),
-            email: admin.email,
-            role: admin.role || "admin",
-          };
-        } catch (error) {
-          console.error("Auth error:", error);
+        const isMatch = await bcrypt.compare(password, admin.password);
+        if (!isMatch) {
+          console.log("password incorrect");
           return null;
         }
+
+        console.log("password matched");
+
+        return {
+          id: admin._id.toString(),
+          email: admin.email,
+          role: admin.role || "admin",
+        };
       },
     }),
   ],
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.role = user.role;
-        token.id = user.id;
+        token.role = user.role || "admin";
       }
       return token;
     },
     async session({ session, token }) {
-      if (token) {
-        session.user.role = token.role;
-        session.user.id = token.id;
-      }
+      session.user.role = token.role || "admin";
       return session;
     },
   },
+  secret: process.env.NEXTAUTH_SECRET,
   pages: {
     signIn: "/",
   },
-  session: {
-    strategy: "jwt",
-  },
-  secret: process.env.NEXTAUTH_SECRET,
 };
 
 const handler = NextAuth(authOptions);
