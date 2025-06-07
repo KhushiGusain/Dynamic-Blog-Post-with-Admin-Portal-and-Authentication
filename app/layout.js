@@ -6,7 +6,7 @@ import { ToastContainer, Bounce, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SessionWrapper from "@/components/SessionWrapper";
 import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import { authOptions } from "./api/auth/auth.config";
 import { Poppins } from 'next/font/google'
 
 
