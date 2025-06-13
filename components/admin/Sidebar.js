@@ -4,6 +4,7 @@ import { MdDashboardCustomize } from "react-icons/md";
 import { MdOutlineNoteAlt } from "react-icons/md";
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
+import { FaEye } from "react-icons/fa";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -55,6 +56,14 @@ const Sidebar = () => {
           >
             <MdOutlineNoteAlt size={20}/>
             <span className="font-medium">Create New Blog</span>
+          </button>
+
+          <button 
+            onClick={() => router.push('/blogs')}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors duration-200 text-gray-600 hover:bg-gray-50`}
+          >
+            <FaEye size={20}/>
+            <span className="font-medium">View Public Blogs</span>
           </button>
         </nav>
       </div>
